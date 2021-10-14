@@ -130,7 +130,7 @@ else
   ALL_MODIFIED_FILES_QUOTED=$(echo "")
   for file in ${ALL_MODIFIED_FILES_ARRAY[@]}; do
     #things
-    ALL_MODIFIED_FILES_QUOTED+='"${file}"'
+    ALL_MODIFIED_FILES_QUOTED+='$file'
   done
   
   echo "quoted all modified files: ${ALL_MODIFIED_FILES_QUOTED}"
