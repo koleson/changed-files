@@ -130,9 +130,11 @@ else
   ALL_MODIFIED_FILES_QUOTED=$(echo "")
   for file in ${ALL_MODIFIED_FILES_ARRAY[*]}; do
     #things
-    ALL_MODIFIED_FILES_QUOTED+='\"$file\" '
+    ALL_MODIFIED_FILES_QUOTED+="\"${file}\""
   done
-
+  
+  echo "quoted all modified files: ${ALL_MODIFIED_FILES_QUOTED}"
+  
   ALL_OTHER_MODIFIED_FILES=$(git diff --diff-filter="ACMR" --name-only "$PREVIOUS_SHA" "$CURRENT_SHA")
 
   IFS=" " read -r -a UNIQUE_ALL_MODIFIED_FILES_ARRAY <<< "$(echo "${ALL_MODIFIED_FILES_ARRAY[*]}" | tr " " "\n" | sort -u | tr "\n" " ")"
