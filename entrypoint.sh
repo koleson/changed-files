@@ -130,7 +130,7 @@ else
   ALL_MODIFIED_FILES_QUOTED=$(echo "")
   for file in ${ALL_MODIFIED_FILES_ARRAY[*]}; do
     #things
-    ALL_MODIFIED_FILES_QUOTED+='"$file" '
+    ALL_MODIFIED_FILES_QUOTED+='\"$file\" '
   done
 
   ALL_OTHER_MODIFIED_FILES=$(git diff --diff-filter="ACMR" --name-only "$PREVIOUS_SHA" "$CURRENT_SHA")
