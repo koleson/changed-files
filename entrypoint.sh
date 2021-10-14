@@ -93,7 +93,8 @@ else
   for path in ${INPUT_FILES}
   do
     echo "Checking for file changes: \"${path}\"..."
-    IFS=" "
+    # special separator so files with spaces are accessible
+    IFS="^"
     # shellcheck disable=SC2207
     ADDED_ARRAY+=($(git diff --diff-filter=A --name-only "$PREVIOUS_SHA" "$CURRENT_SHA" | grep -E "(${path})" | xargs -0 || true))
     # shellcheck disable=SC2207
