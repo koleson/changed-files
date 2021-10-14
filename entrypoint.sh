@@ -128,7 +128,7 @@ else
   ALL_MODIFIED_FILES=$(echo "${ALL_MODIFIED_FILES_ARRAY[*]}" | tr " " "\n" | sort -u | awk -v d="$INPUT_SEPARATOR" '{s=(NR==1?s:s d)$0}END{print s}')
 
   ALL_MODIFIED_FILES_QUOTED=$(echo "")
-  for file in ${ALL_MODIFIED_FILES_ARRAY[*]}; do
+  for file in ${ALL_MODIFIED_FILES_ARRAY[@]}; do
     #things
     ALL_MODIFIED_FILES_QUOTED+='"${file}"'
   done
