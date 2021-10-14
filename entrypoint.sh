@@ -117,16 +117,16 @@ else
     ALL_MODIFIED_FILES_ARRAY+=($(git diff --diff-filter="ACMR" --name-only "$PREVIOUS_SHA" "$CURRENT_SHA" | grep -E "(${path})" | xargs -0 || true))
   done
 
-  ADDED=$(echo "${ADDED_ARRAY[*]}" | tr " " "_" | sort -u | awk -v d="$INPUT_SEPARATOR" '{printf("\"%s\" ", $0);}')
-  COPIED=$(echo "${COPIED_ARRAY[*]}" | tr " " "_" | sort -u | awk -v d="$INPUT_SEPARATOR" '{printf("\"%s\" ", $0);}')
-  DELETED=$(echo "${DELETED_ARRAY[*]}" | tr " " "_" | sort -u | awk -v d="$INPUT_SEPARATOR" '{printf("\"%s\" ", $0);}')
-  MODIFIED=$(echo "${MODIFIED_ARRAY[*]}" | tr " " "_" | sort -u | awk -v d="$INPUT_SEPARATOR" '{printf("\"%s\" ", $0);}')
-  RENAMED=$(echo "${RENAMED_ARRAY[*]}" | tr " " "_" | sort -u | awk -v d="$INPUT_SEPARATOR" '{printf("\"%s\" ", $0);}')
-  TYPE_CHANGED=$(echo "${TYPE_CHANGED_ARRAY[*]}" | tr " " "_" | sort -u | awk -v d="$INPUT_SEPARATOR" '{printf("\"%s\" ", $0);}')
-  UNMERGED=$(echo "${UNMERGED_ARRAY[*]}" | tr " " "_" | sort -u | awk -v d="$INPUT_SEPARATOR" '{printf("\"%s\" ", $0);}')
-  UNKNOWN=$(echo "${UNKNOWN_ARRAY[*]}" | tr " " "_" | sort -u | awk -v d="$INPUT_SEPARATOR" '{printf("\"%s\" ", $0);}')
-  ALL_CHANGED_AND_MODIFIED=$(echo "${ALL_CHANGED_ARRAY[*]}" | tr " " "_" | sort -u | awk -v d="$INPUT_SEPARATOR" '{printf("\"%s\" ", $0);}')
-  ALL_MODIFIED_FILES=$(echo "${ALL_MODIFIED_FILES_ARRAY[*]}" | tr " " "_" | sort -u | awk -v d="$INPUT_SEPARATOR" '{printf("\"%s\" ", $0);}')
+  ADDED=$(echo "${ADDED_ARRAY[*]}" | sort -u | awk -v d="$INPUT_SEPARATOR" '{printf("\"%s\" ", $0);}')
+  COPIED=$(echo "${COPIED_ARRAY[*]}" | sort -u | awk -v d="$INPUT_SEPARATOR" '{printf("\"%s\" ", $0);}')
+  DELETED=$(echo "${DELETED_ARRAY[*]}" | sort -u | awk -v d="$INPUT_SEPARATOR" '{printf("\"%s\" ", $0);}')
+  MODIFIED=$(echo "${MODIFIED_ARRAY[*]}" sort -u | awk -v d="$INPUT_SEPARATOR" '{printf("\"%s\" ", $0);}')
+  RENAMED=$(echo "${RENAMED_ARRAY[*]}" | sort -u | awk -v d="$INPUT_SEPARATOR" '{printf("\"%s\" ", $0);}')
+  TYPE_CHANGED=$(echo "${TYPE_CHANGED_ARRAY[*]}" | sort -u | awk -v d="$INPUT_SEPARATOR" '{printf("\"%s\" ", $0);}')
+  UNMERGED=$(echo "${UNMERGED_ARRAY[*]}" | sort -u | awk -v d="$INPUT_SEPARATOR" '{printf("\"%s\" ", $0);}')
+  UNKNOWN=$(echo "${UNKNOWN_ARRAY[*]}" | sort -u | awk -v d="$INPUT_SEPARATOR" '{printf("\"%s\" ", $0);}')
+  ALL_CHANGED_AND_MODIFIED=$(echo "${ALL_CHANGED_ARRAY[*]}" | sort -u | awk -v d="$INPUT_SEPARATOR" '{printf("\"%s\" ", $0);}')
+  ALL_MODIFIED_FILES=$(echo "${ALL_MODIFIED_FILES_ARRAY[*]}" | sort -u | awk -v d="$INPUT_SEPARATOR" '{printf("\"%s\" ", $0);}')
   
   
   ALL_OTHER_MODIFIED_FILES=$(git diff --diff-filter="ACMR" --name-only "$PREVIOUS_SHA" "$CURRENT_SHA")
